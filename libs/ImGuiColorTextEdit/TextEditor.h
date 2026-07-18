@@ -252,6 +252,9 @@ public:
 	void SelectAll();
 	bool HasSelection() const;
 
+	std::string GetWordUnderCursor() const;
+	std::string GetWordAt(const Coordinates& aCoords) const;
+
 	void Copy();
 	void Cut();
 	void Paste();
@@ -340,8 +343,6 @@ private:
 	void EnterCharacter(ImWchar aChar, bool aShift);
 	void Backspace();
 	void DeleteSelection();
-	std::string GetWordUnderCursor() const;
-	std::string GetWordAt(const Coordinates& aCoords) const;
 	ImU32 GetGlyphColor(const Glyph& aGlyph) const;
 
 	void HandleKeyboardInputs();

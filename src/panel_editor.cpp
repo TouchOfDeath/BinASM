@@ -6,6 +6,7 @@
 #include "app_state.h"
 #include "fonts.h"
 #include "ui_premium.h"
+#include "hover_provider.h"
 
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -152,6 +153,16 @@ void RenderBinaryEditor(AppState& state) {
     if (g_editor_font) ImGui::PushFont(g_editor_font);
     state.tabs[state.active_tab].editor.Render("TextEditor");
     if (g_editor_font) ImGui::PopFont();
+
+    // =========================================================================
+    //  Hover IntelliSense Tooltip
+    // =========================================================================
+    // Render hover tooltip after the editor, using the global hover system
+    {
+        const auto& hover_system = get_hover_system();
+        HoverContext ctx = hover_system.detect_hover(state.tabs[state.active_tab].editor);
+        hover_system.render_tooltip(ctx, state);
+    }
 
     ImGui::End();
     ImGui::PopStyleVar(); // WindowPadding
