@@ -71,12 +71,12 @@ static void reg_card(const char* name, const char* val, ImU32 accent,
 //  RenderVMState
 // =============================================================================
 void RenderVMState(AppState& state) {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("VM State (8-bit CPU)");
 
     // ---- Registers ----------------------------------------------------------
     ui::header_gradient("Registers", ui::col::ACCENT_GREEN);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
 
     char buf[64];
     std::snprintf(buf, sizeof(buf), "0x%02X  (%d)",
@@ -102,9 +102,9 @@ void RenderVMState(AppState& state) {
              "Printed to the Console Output panel.");
 
     // ---- CPU Flags ----------------------------------------------------------
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ui::header_gradient("CPU Flags", ui::col::ACCENT_AMBER);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
 
     {
         ImU32 col = state.vm.carry_flag ? ui::col::ACCENT_GREEN : ui::col::TEXT_SEC;
@@ -118,7 +118,7 @@ void RenderVMState(AppState& state) {
                               "Set by SUB when a borrow occurs (underflow).\n"
                               "Read by JC — jumps if carry is SET.");
     }
-    ImGui::Dummy(ImVec2(0, 2));
+    ImGui::Dummy(ImVec2(0, 4));
     {
         ImU32 col = state.vm.zero_flag ? ui::col::ACCENT_CYAN : ui::col::TEXT_SEC;
         ui::status_dot(col, 5.0f, state.vm.zero_flag);
@@ -133,9 +133,9 @@ void RenderVMState(AppState& state) {
 
     // ---- Memory Map ---------------------------------------------------------
     ui::separator_gradient(ui::col::ACCENT_GREEN, 0.25f);
-    ImGui::Dummy(ImVec2(0, 2));
+    ImGui::Dummy(ImVec2(0, 4));
     ui::header_gradient("Memory Map (16 bytes)", ui::col::ACCENT_PUR);
-    ImGui::Dummy(ImVec2(0, 2));
+    ImGui::Dummy(ImVec2(0, 4));
 
     for (int i = 0; i < 16; ++i) {
         bool is_pc = (i == state.vm.pc && !state.vm.halted);

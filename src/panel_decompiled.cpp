@@ -9,11 +9,11 @@
 #include "imgui.h"
 
 void RenderDecompiledOutput(AppState& state) {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Decompiled Output");
 
     ui::header_gradient("Reverse-Engineered Source", ui::col::ACCENT_MAG);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ImGui::TextDisabled("Runs on Run / Step / Hex Editor edit.  Manual refresh:");
     ImGui::SameLine();
     if (ImGui::SmallButton("Refresh")) {

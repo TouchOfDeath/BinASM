@@ -147,14 +147,14 @@ int main(int, char**) {
             ImGui::DockBuilderSetNodeSize(dockspace_id, vp->Size);
 
             ImGuiID dock_main   = dockspace_id;
-            ImGuiID dock_bottom = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Down,  0.22f, nullptr, &dock_main);
-            ImGuiID dock_left   = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Left,  0.14f, nullptr, &dock_main);
-            ImGuiID dock_vm     = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Left,  0.16f, nullptr, &dock_main);
-            ImGuiID dock_right  = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Right, 0.35f, nullptr, &dock_main);
+            ImGuiID dock_bottom = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Down,  0.25f, nullptr, &dock_main);
+            ImGuiID dock_left   = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Left,  0.18f, nullptr, &dock_main);
+            ImGuiID dock_vm     = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Left,  0.20f, nullptr, &dock_main);
+            ImGuiID dock_right  = ImGui::DockBuilderSplitNode(dock_main, ImGuiDir_Right, 0.30f, nullptr, &dock_main);
 
             ImGui::DockBuilderDockWindow("Explorer",             dock_left);
             ImGui::DockBuilderDockWindow("VM State (8-bit CPU)", dock_vm);
-            ImGui::DockBuilderDockWindow("Opcode Cheat Sheet",   dock_vm);
+            ImGui::DockBuilderDockWindow("Opcode Cheat Sheet",   dock_right);
             ImGui::DockBuilderDockWindow("Console Output",       dock_bottom);
             ImGui::DockBuilderDockWindow("Debug Assistant",      dock_bottom);
             ImGui::DockBuilderDockWindow("Decompiled Output",    dock_right);

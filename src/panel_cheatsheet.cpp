@@ -11,11 +11,11 @@
 #include "imgui.h"
 
 void RenderCheatSheetPanel() {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Opcode Cheat Sheet");
 
     ui::header_gradient("ISA Reference", ui::col::ACCENT_CYAN);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ui::separator_gradient(ui::col::ACCENT_CYAN, 0.25f);
 
     if (ImGui::BeginTable("cheat_sheet", 3,
