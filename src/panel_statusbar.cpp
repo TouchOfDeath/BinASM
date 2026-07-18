@@ -27,7 +27,7 @@ void RenderStatusBar(bool vm_running, bool vm_halted, const VM& vm, bool has_err
         ImGuiWindowFlags_NoDocking;
 
     ImGui::PushStyleVar  (ImGuiStyleVar_WindowRounding, 0.0f);
-    ImGui::PushStyleVar  (ImGuiStyleVar_WindowPadding,  ImVec2(14, 6));
+    ImGui::PushStyleVar  (ImGuiStyleVar_WindowPadding,  ImVec2(18, 8));
     ImGui::PushStyleVar  (ImGuiStyleVar_WindowBorderSize, 0.0f);
     ImGui::PushStyleColor(ImGuiCol_WindowBg,
         ui::col::v(ui::col::with_alpha(ui::col::BG_DEEP, 0.97f)));

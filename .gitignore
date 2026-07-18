@@ -1,5 +1,5 @@
 ```
-# Build artifacts
+# Compiled and build artifacts
 *.o
 *.obj
 *.exe
@@ -7,42 +7,42 @@
 *.so
 *.a
 *.out
-
-# C/C++ build directories
 build/
 dist/
 target/
 
 # Dependencies
-node_modules/
 venv/
 .venv/
 __pycache__/
-*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.gradle/
+node_modules/
 
-# IDE/Editor files
-.vscode/
-.idea/
+# Logs and temp files
+*.log
+*.tmp
 *.swp
 *.swo
-*.tmp
 
-# Logs
-*.log
-
-# Environment files
+# Environment
 .env
 .env.local
 *.env.*
 
-# Coverage reports
-coverage/
-htmlcov/
-*.coverage
+# Editors
+.vscode/
+.idea/
 
-# OS files
+# System files
 .DS_Store
 Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # Compressed files
 *.zip
@@ -63,4 +63,8 @@ Thumbs.db
 *.Z
 *.lz
 *.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```

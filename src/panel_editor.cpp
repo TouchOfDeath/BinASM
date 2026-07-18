@@ -18,13 +18,13 @@ void RenderBinaryEditor(AppState& state) {
         state.save_error_open = false;
     }
 
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Binary Editor");
 
     // =========================================================================
     //  VS Code-style reorderable tab bar
     // =========================================================================
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10, 5));
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12, 6));
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing,  ImVec2(0, 0));
     ImGui::PushStyleColor(ImGuiCol_Tab,
         ui::col::v(ui::col::with_alpha(ui::col::BG_MID, 0.8f)));
@@ -59,12 +59,12 @@ void RenderBinaryEditor(AppState& state) {
     }
     ImGui::PopStyleColor(3);
     ImGui::PopStyleVar(2);
-    ImGui::Dummy(ImVec2(0, 2));
+    ImGui::Dummy(ImVec2(0, 4));
 
     // =========================================================================
     //  Premium toolbar
     // =========================================================================
-    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(6, 0));
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(8, 0));
 
     if (ui::icon_button(ui::icons::play(), "Run",
                         "Run VM  [F5]\nAssemble source and start execution from the top.",
@@ -179,21 +179,21 @@ void RenderBinaryEditor(AppState& state) {
         ImGui::TextUnformatted(" Failed to save file");
         ImGui::PopStyleColor();
         ui::separator_gradient(ui::col::ACCENT_CORAL, 0.35f);
-        ImGui::Dummy(ImVec2(0, 4));
+        ImGui::Dummy(ImVec2(0, 6));
         ImGui::TextDisabled("Path:");
         ImGui::SameLine();
         ImGui::TextWrapped("%s", state.save_error_path.c_str());
-        ImGui::Dummy(ImVec2(0, 4));
+        ImGui::Dummy(ImVec2(0, 6));
         ImGui::PushStyleColor(ImGuiCol_Text, ui::col::v(ui::col::ACCENT_AMBER));
         ImGui::TextWrapped("%s", state.save_error_msg.c_str());
         ImGui::PopStyleColor();
-        ImGui::Dummy(ImVec2(0, 8));
+        ImGui::Dummy(ImVec2(0, 10));
         float btn_w = 100.0f;
         ImGui::SetCursorPosX(
             (ImGui::GetContentRegionAvail().x - btn_w) * 0.5f +
              ImGui::GetStyle().WindowPadding.x);
         if (ImGui::Button("OK", ImVec2(btn_w, 0))) ImGui::CloseCurrentPopup();
-        ImGui::Dummy(ImVec2(0, 4));
+        ImGui::Dummy(ImVec2(0, 6));
         ImGui::EndPopup();
     }
 }

@@ -228,22 +228,21 @@ void SetupPremiumTheme() {
     ImGuiIO& io = ImGui::GetIO();
 
     // =========================================================================
-    //  Geometry — VS Code / JetBrains-inspired proportions.
+    //  Geometry — Airy, spacious layout for reduced cognitive load.
     //
-    //  Targets: slightly tighter than the original theme (which was roomy but
-    //  wasteful at smaller resolutions), but still appreciably roomier than
-    //  ImGui defaults. Fonts are typically loaded at 14-15 px, so frame
-    //  padding is tuned to those sizes.
+    //  Targets: Generous breathing room between elements to reduce visual
+    //  clutter. Increased from cramped values to create a modern, clean look
+    //  that feels less crowded and more professional.
     // =========================================================================
-    style.WindowPadding       = ImVec2(14.0f, 12.0f);
-    style.FramePadding        = ImVec2(10.0f,  6.0f);
-    style.CellPadding         = ImVec2( 6.0f,  4.0f);
-    style.ItemSpacing         = ImVec2( 8.0f,  6.0f);
-    style.ItemInnerSpacing    = ImVec2( 6.0f,  4.0f);
-    style.IndentSpacing       = 16.0f;
-    style.ScrollbarSize       = 12.0f;
-    style.GrabMinSize         = 10.0f;
-    style.DockingSeparatorSize = 2.0f;  // crisp, thin dock splitters
+    style.WindowPadding       = ImVec2(20.0f, 16.0f);  // was (14, 12) - more breathing room inside windows
+    style.FramePadding        = ImVec2(14.0f,  8.0f);  // was (10, 6)  - taller, roomier input fields
+    style.CellPadding         = ImVec2( 8.0f,  5.0f);  // was (6, 4)   - more space in table cells
+    style.ItemSpacing         = ImVec2(12.0f,  9.0f);  // was (8, 6)   - generous gaps between widgets
+    style.ItemInnerSpacing    = ImVec2( 8.0f,  6.0f);  // was (6, 4)   - better internal spacing
+    style.IndentSpacing       = 20.0f;                 // was 16       - clearer hierarchy indentation
+    style.ScrollbarSize       = 14.0f;                 // was 12       - easier to grab scrollbars
+    style.GrabMinSize         = 12.0f;                 // was 10       - larger resize grips
+    style.DockingSeparatorSize = 3.0f;  // slightly thicker dock splitters for easier grabbing
 
     // =========================================================================
     //  Rounding — deliberately tiered.

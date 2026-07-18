@@ -9,11 +9,11 @@
 #include "imgui.h"
 
 void RenderConsole(const AppState& state) {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Console Output");
 
     ui::header_gradient("VM Output Stream", ui::col::ACCENT_GREEN);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ui::separator_gradient(ui::col::ACCENT_GREEN, 0.25f);
 
     ImGui::PushStyleColor(ImGuiCol_ChildBg,

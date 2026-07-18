@@ -15,11 +15,11 @@
 #include <string>
 
 void RenderLiveDisassembler(const AppState& state) {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Live Disassembler");
 
     ui::header_gradient("Linear Disassembly", ui::col::ACCENT_CYAN);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ui::separator_gradient(ui::col::ACCENT_CYAN, 0.25f);
 
     ImGui::PushStyleColor(ImGuiCol_ChildBg,

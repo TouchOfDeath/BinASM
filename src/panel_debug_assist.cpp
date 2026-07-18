@@ -9,11 +9,11 @@
 #include "imgui.h"
 
 void RenderDebugAssistant(const AppState& state) {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(14, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18, 14));
     ImGui::Begin("Debug Assistant");
 
     ui::header_gradient("Diagnostics", ui::col::ACCENT_AMBER);
-    ImGui::Dummy(ImVec2(0, 4));
+    ImGui::Dummy(ImVec2(0, 6));
     ui::separator_gradient(ui::col::ACCENT_AMBER, 0.25f);
 
     if (state.warnings.empty() && !state.has_errors) {
