@@ -114,6 +114,12 @@ struct AppState {
     bool open_file_dialog_open = false;
     char open_file_input[256]  = {};
 
+    // ---- Welcome & Onboarding system ----------------------------------------
+    bool show_welcome       = true;   // Show welcome dashboard on first run
+    bool dont_show_welcome  = false;  // User preference to skip welcome
+    bool show_tutorial      = false;  // Show interactive tutorial overlay
+    int  tutorial_step      = 0;      // Current tutorial step index
+
     // ---- Pending events (panels → simulation) -------------------------------
     std::vector<AppEvent> events;
 

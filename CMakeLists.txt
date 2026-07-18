@@ -121,6 +121,7 @@ set(APP_SOURCES
     src/hover_provider.cpp
     src/step_back.cpp
     src/memory_grid.cpp
+    src/panel_welcome.cpp
 )
 
 set(TEXTEDIT_SOURCES

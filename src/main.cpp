@@ -38,6 +38,9 @@
 #include "panel_statusbar.h"
 #include "panel_cheatsheet.h"
 
+// Welcome dashboard and onboarding system
+#include "panel_welcome.h"
+
 // Hex editor rendered directly (it writes back into vm.memory).
 #include "hex_editor.h"
 
@@ -244,18 +247,28 @@ int main(int, char**) {
         // =========================================================================
         //  Panels — order does not affect correctness; events are deferred.
         // =========================================================================
-        RenderExplorer(state);
-        RenderBinaryEditor(state);
-        RenderVMState(state);
-        RenderLiveDisassembler(state);
-        RenderDecompiledOutput(state);
-        RenderMacroInspector(state);
-        RenderConsole(state);
-        RenderDebugAssistant(state);
-        RenderCheatSheetPanel();
+        
+        // Render welcome dashboard if this is first run or user hasn't dismissed it
+        RenderWelcomeDashboard(state);
+        
+        // Render onboarding tutorial overlay if active
+        RenderOnboardingOverlay(state);
+        
+        // Only show other panels if welcome is dismissed (or never shown)
+        if (!state.show_welcome) {
+            RenderExplorer(state);
+            RenderBinaryEditor(state);
+            RenderVMState(state);
+            RenderLiveDisassembler(state);
+            RenderDecompiledOutput(state);
+            RenderMacroInspector(state);
+            RenderConsole(state);
+            RenderDebugAssistant(state);
+            RenderCheatSheetPanel();
+        }
 
         // Hex editor writes directly into vm.memory and signals dirty.
-        {
+        if (!state.show_welcome) {
             uint8_t pc_highlight = state.vm.halted ? 0xFFu : state.vm.pc;
             if (state.hex_editor.render("Memory Hex Editor",
                                         state.vm.memory, 16, pc_highlight)) {
@@ -264,16 +277,18 @@ int main(int, char**) {
         }
 
         // Memory Grid Inspector - new feature with color-coded visualization
-        {
+        if (!state.show_welcome) {
             if (get_memory_grid().render("Memory Grid Inspector", state.vm)) {
                 state.decompiler_dirty = true;
             }
         }
 
         // CFG and status bar read from state members directly (Phase-3 API).
-        RenderCFGWindow("Control Flow Graph",
-                        state.decompiler,
-                        state.vm_running && !state.vm.halted);
+        if (!state.show_welcome) {
+            RenderCFGWindow("Control Flow Graph",
+                            state.decompiler,
+                            state.vm_running && !state.vm.halted);
+        }
 
         RenderStatusBar(state.vm_running, state.vm.halted,
                         state.vm, state.has_errors);
