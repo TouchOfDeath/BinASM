@@ -119,6 +119,8 @@ set(APP_SOURCES
     src/hex_editor.cpp
     src/preprocessor.cpp
     src/hover_provider.cpp
+    src/step_back.cpp
+    src/memory_grid.cpp
 )
 
 set(TEXTEDIT_SOURCES

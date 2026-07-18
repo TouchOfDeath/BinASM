@@ -41,6 +41,10 @@
 // Hex editor rendered directly (it writes back into vm.memory).
 #include "hex_editor.h"
 
+// New features: Memory Grid and Step-Back System
+#include "memory_grid.h"
+#include "step_back.h"
+
 static void glfw_error_callback(int error, const char* description) {
     fprintf(stderr, "GLFW Error %d: %s\n", error, description);
 }
@@ -255,6 +259,13 @@ int main(int, char**) {
             uint8_t pc_highlight = state.vm.halted ? 0xFFu : state.vm.pc;
             if (state.hex_editor.render("Memory Hex Editor",
                                         state.vm.memory, 16, pc_highlight)) {
+                state.decompiler_dirty = true;
+            }
+        }
+
+        // Memory Grid Inspector - new feature with color-coded visualization
+        {
+            if (get_memory_grid().render("Memory Grid Inspector", state.vm)) {
                 state.decompiler_dirty = true;
             }
         }
