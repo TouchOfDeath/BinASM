@@ -1,26 +1,54 @@
-# Build directories
+```
+# Compiled and build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
+# Dependencies
+.libs/
+lib/
+.libs/**
 build/
-bin/
-out/
-
-# CMake files
-CMakeCache.txt
+cmake-build*/
 CMakeFiles/
-cmake_install.cmake
+CMakeCache.txt
 Makefile
-*.cmake
+compile_commands.json
 
-# IDEs and Editors
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-*.tmp
 
-# Operating System Files
+# OS
 .DS_Store
 Thumbs.db
 
-# User specifics
-binary_ide_layout.ini
-*.bincode
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python (if applicable)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.nox/
+```

@@ -44,18 +44,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(imgui)
 
 # ---------------------------------------------------------------------------
-#  ImGuiColorTextEdit  (no CMakeLists.txt — sources added manually below)
+#  ImGuiColorTextEdit  (use local copy with modifications for hover support)
 # ---------------------------------------------------------------------------
-if(POLICY CMP0169)
-    cmake_policy(SET CMP0169 OLD)
-endif()
-FetchContent_Declare(
-    imgui_color_text_edit
-    GIT_REPOSITORY https://github.com/BalazsJako/ImGuiColorTextEdit.git
-    GIT_TAG        master
-    GIT_SHALLOW    ON
-)
-FetchContent_Populate(imgui_color_text_edit)
+# Use the local version in libs/ImGuiColorTextEdit which has exposed methods
+# needed for the hover IntelliSense feature.
+set(IMGUI_COLOR_TEXT_EDIT_SOURCE_DIR "${CMAKE_SOURCE_DIR}/libs/ImGuiColorTextEdit")
 
 # ============================================================================
 #  Platform-specific graphics / windowing
@@ -125,10 +118,11 @@ set(APP_SOURCES
     src/decompiler.cpp
     src/hex_editor.cpp
     src/preprocessor.cpp
+    src/hover_provider.cpp
 )
 
 set(TEXTEDIT_SOURCES
-    ${imgui_color_text_edit_SOURCE_DIR}/TextEditor.cpp
+    ${IMGUI_COLOR_TEXT_EDIT_SOURCE_DIR}/TextEditor.cpp
 )
 
 # ============================================================================
@@ -157,7 +151,7 @@ endif()
 target_include_directories(BinaryIDE PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
-    ${imgui_color_text_edit_SOURCE_DIR}
+    ${IMGUI_COLOR_TEXT_EDIT_SOURCE_DIR}
 )
 
 # ============================================================================
@@ -181,7 +175,7 @@ endif()
 # Use a generator expression so the flag is correct regardless of compiler.
 set_source_files_properties(
     ${IMGUI_SOURCES}
-    ${imgui_color_text_edit_SOURCE_DIR}/TextEditor.cpp
+    ${IMGUI_COLOR_TEXT_EDIT_SOURCE_DIR}/TextEditor.cpp
     PROPERTIES COMPILE_OPTIONS "$<IF:$<CXX_COMPILER_ID:MSVC>,/w,-w>"
 )
 
