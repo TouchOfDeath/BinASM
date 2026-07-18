@@ -8,57 +8,43 @@
 *.a
 *.out
 
-# CMake build directory
+# C/C++ build directories
 build/
-cmake-build-*/
+dist/
+target/
 
 # Dependencies
-vendor/
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
+# IDE/Editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Coverage reports
+coverage/
+htmlcov/
+*.coverage
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Python cache (if any Python files exist in project)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# MyPy cache
-.mypy_cache/
-
-# Pytest cache
-.pytest_cache/
-
-# Distribution / packaging
-dist/
-*.tar.gz
-*.whl
-*.egg-info/
-
-# Compression artifacts
+# Compressed files
 *.zip
 *.gz
 *.tar
